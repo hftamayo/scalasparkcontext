@@ -13,6 +13,11 @@ object CreatingSparkContextWithSparkSession {
 
     val arrayRDD = sparkSession.sparkContext.parallelize(array, 2)
     arrayRDD.foreach(println)
+
+    val file = "countries_index.csv"
+    val fileRDD = sparkSession.sparkContext.textFile(file)
+    println("Num of Records: "+ fileRDD.count())
+    fileRDD.take(10).foreach(println)
   }
 
 }
